@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FREE FIRE KING</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #090909;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    h1 { color: #ff3030; text-align: center; }
+    .card {
+      background: #1c1c1c;
+      border: 1px solid #ff3030;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 15px 0;
+    }
+    button {
+      background: #ff3030;
+      color: white;
+      border: 0;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    input {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 7px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔥 FREE FIRE KING</h1>
+  <p style="text-align:center">India's Battle Tournament Arena</p>
+  <h2>Available Tournaments</h2>
+
+  <div id="tournaments"></div>
+  <div id="joinForm"></div>
+
+  <script>
+    const tournaments = [
+      {name:"SOLO BR", entry:10, prize:100},
+      {name:"DUO BR", entry:20, prize:200},
+      {name:"SQUAD BR", entry:40, prize:500},
+      {name:"CS MODE 4 VS 4", entry:40, prize:500}
+    ];
+
+    const area = document.getElementById("tournaments");
+
+    tournaments.forEach(t => {
+      area.innerHTML += `
+        <div class="card">
+          <h2>${t.name}</h2>
+          <p>Entry Fee: ₹${t.entry}</p>
+          <p>Prize Pool: ₹${t.prize}</p>
+          <button onclick="join('${t.name}')">JOIN TOURNAMENT</button>
+        </div>`;
+    });
+
+    function join(name) {
+      document.getElementById("joinForm").innerHTML = `
+        <div class="card">
+          <h2>Join ${name}</h2>
+          <form onsubmit="submitForm(event)">
+            <input id="player" placeholder="Player Name" required>
+            <input id="uid" placeholder="Free Fire UID" required>
+            <button type="submit">SUBMIT</button>
+          </form>
+        </div>`;
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Demo registration successful!");
+    }
+  </script>
+</body>
+</html>
